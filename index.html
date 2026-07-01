@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>饮食照片营养标注</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="top-bar">
+        <div>
+          <p class="eyebrow">今日记录</p>
+          <h1 id="dateTitle">饮食标注</h1>
+        </div>
+        <div class="total-pill" id="dailyTotals">0kcal / 0g</div>
+      </section>
+
+      <section class="panel target-panel" aria-labelledby="targetTitle">
+        <h2 id="targetTitle">目标</h2>
+        <label>
+          <span>热量 kcal</span>
+          <input id="targetCalories" type="number" inputmode="decimal" min="0" step="1" />
+        </label>
+        <label>
+          <span>蛋白质 g</span>
+          <input id="targetProtein" type="number" inputmode="decimal" min="0" step="0.1" />
+        </label>
+      </section>
+
+      <section class="panel">
+        <h2>照片</h2>
+        <div class="file-actions">
+          <label class="file-button">
+            <input id="cameraInput" type="file" accept="image/*" capture="environment" />
+            拍照
+          </label>
+          <label class="file-button secondary">
+            <input id="galleryInput" type="file" accept="image/*" />
+            选择本地图片
+          </label>
+        </div>
+        <img id="sourcePreview" class="source-preview" alt="已选择的餐食照片预览" hidden />
+      </section>
+
+      <section class="panel">
+        <h2>餐次文本</h2>
+        <textarea id="mealInput" spellcheck="false"></textarea>
+        <p class="hint">格式：餐次标题；每行“名称 / 单位 / 热量 / 蛋白质”。</p>
+      </section>
+
+      <section class="actions">
+        <button id="previewButton" type="button">生成预览</button>
+        <button id="saveButton" type="button" disabled>保存到下载</button>
+      </section>
+
+      <p id="message" class="message" role="status"></p>
+
+      <section class="panel preview-panel" id="previewPanel" hidden>
+        <h2>标注图预览</h2>
+        <img id="annotationPreview" class="annotation-preview" alt="营养标注图预览" />
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <h2>今天已保存</h2>
+          <span id="mealCount">0 餐</span>
+        </div>
+        <div id="mealList" class="meal-list"></div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
